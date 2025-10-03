@@ -9,6 +9,7 @@
 #include "CCharacterManager.h"
 #include "CGame.h"
 #include "CVector.h"
+#include "CModel.h"
 
 class CApplication
 {
@@ -28,6 +29,7 @@ public:
 	//繰り返し実行するプログラム
 	void Update();
 private:
+
 	CSound mSoundBgm;
 	CSound mSoundOver;
 
@@ -42,4 +44,7 @@ private:
 	static CTexture mTexture;
 	CEnemy* mpEnemy;
 	CVector mEye;
+	//モデルクラスのインスタンス作成
+	CModel mModel;
+
 };

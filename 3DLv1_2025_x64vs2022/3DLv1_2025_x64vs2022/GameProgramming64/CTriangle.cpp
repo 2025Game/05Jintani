@@ -33,3 +33,13 @@ void CTriangle::Normal(const CVector& v0, const CVector& v1, const CVector& v2) 
 	mN[1] = v1;
 	mN[2] = v2;
 }
+
+int CTriangle::MaterialIdx()
+{
+	return mMaterialIdx;
+}
+
+void CTriangle::MaterialIdx(int idx)
+{
+	mMaterialIdx = idx;
+}

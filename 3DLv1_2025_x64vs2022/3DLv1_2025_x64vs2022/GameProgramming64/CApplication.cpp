@@ -6,6 +6,7 @@
 #include "glut.h"
 #include "CVector.h"
 #include "CTriangle.h"
+#include "CMatrix.h"
 
 
 #define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
@@ -34,6 +35,8 @@ void CApplication::Start()
 	//モデルファイルの入力
 	mModel.Load(MODEL_OBJ);
 	mBackGround.Load(MODEL_BACKGROUND);
+	CMatrix matrix;
+	matrix.Print();
 }
 
 void CApplication::Update()

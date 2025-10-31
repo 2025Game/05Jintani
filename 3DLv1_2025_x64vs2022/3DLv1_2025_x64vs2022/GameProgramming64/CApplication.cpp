@@ -83,5 +83,6 @@ void CApplication::Update()
 
 	mModel.Render(CMatrix().Scale(0.1f, 0.1f, 0.1f));
 	mBackGround.Render();
+	mModel.Render(CMatrix().RotateX(90.0f));
 }
 

@@ -10,6 +10,7 @@
 */
 class CMaterial {
 public:
+
 	//テクスチャの取得
 	CTexture* Texture();
 	//マテリアルを無効にする

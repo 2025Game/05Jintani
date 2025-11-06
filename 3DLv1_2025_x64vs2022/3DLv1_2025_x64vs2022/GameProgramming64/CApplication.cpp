@@ -84,5 +84,11 @@ void CApplication::Update()
 
 	mBackGround.Render();
 
-	mModel.Render(CMatrix().Translate(-2.0f, 0.0f, -15.0f));
+	CMatrix matrix, position, rotation, scale;
+	position.Translate(0.5f, 1.8f, 0.5f); //移動行列設定
+	rotation.RotateY(180.0f); //回転行列設定
+	scale.Scale(0.1f, 0.1f, 0.1f); //拡大縮小行列設定
+	matrix = scale * rotation * position; //合成行列設定
+	mModel.Render(matrix); //モデルの描画
+
 }

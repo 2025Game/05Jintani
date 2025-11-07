@@ -10,6 +10,7 @@
 #include "CGame.h"
 #include "CVector.h"
 #include "CModel.h"
+#include "CCharacter3.h"
 
 class CApplication
 {
@@ -46,5 +47,7 @@ private:
 	CVector mEye;
 	//モデルクラスのインスタンス作成
 	CModel mModel;
+	CCharacter3 mCharacter;
+	CCharacter3 mPlayer;
 
 };

@@ -48,6 +48,6 @@ private:
 	//モデルクラスのインスタンス作成
 	CModel mModel;
 	CCharacter3 mCharacter;
-	CCharacter3 mPlayer;
+	CPlayer mPlayer;
 
 };

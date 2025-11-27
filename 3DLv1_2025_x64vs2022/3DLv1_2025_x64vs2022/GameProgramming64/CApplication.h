@@ -50,7 +50,7 @@ private:
 	CVector mEye;
 	//モデルクラスのインスタンス作成
 	CModel mModel;
-	CCharacter3 mCharacter;
+	//CCharacter3 mCharacter;
 	CPlayer mPlayer;
 
 };

@@ -7,6 +7,7 @@
 #include "CTriangle.h"
 #include "CMaterial.h"
 #include "CVector.h"
+#include "CCollider.h"
 
 /*
 弾クラス
@@ -14,6 +15,7 @@
 */
 class CBullet : public CCharacter3 {
 public:
+	
 	CBullet();
 	//幅と奥行きの設定
 	//Set(幅, 奥行)
@@ -22,10 +24,12 @@ public:
 	void Update();
 	//描画
 	void Render();
+	
+
 private:
+	CCollider mCollider;
 	//生存時間
 	int mLife;
-
 	//三角形
 	CTriangle mT;
 	CVector mV[3]; //頂点座標

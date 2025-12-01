@@ -27,16 +27,19 @@ void CBullet::Update() {
 
 }
 
+
 //•`‰æ
-void CBullet::Render() {
+void CBullet::Render()
+{
 	//DIFFUSE‰©Fİ’è
 	float c[] = { 1.0f, 1.0f, 0.0f, 1.0f };
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, c);
 	//OŠpŒ`•`‰æ¨ƒqƒ“ƒg 12
 	mT.Render(mMatrix);
-
+	mCollider.Render();
 }
 
 CBullet::CBullet()
-	: mLife(50)
+	: mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.1f)
+	, mLife(50)
 {}

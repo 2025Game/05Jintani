@@ -12,11 +12,12 @@
 #include "CModel.h"
 #include "CCharacter3.h"
 #include "CTaskManager.h"
+#include "CCollisionManager.h"
 
 class CApplication
 {
 public:
-	static CTaskManager* TaskManager();
+	//static CTaskManager* TaskManager();
 	static CTexture* Texture();
 	static CCharacterManager* CharacterManager();
 	enum class EState
@@ -34,7 +35,7 @@ public:
 private:
 	//C5ƒ‚ƒfƒ‹
 	CModel mModelC5;
-	static CTaskManager mTaskManager;
+	//static CTaskManager mTaskManager;
 	CModel mBackGround; //”wŒiƒ‚ƒfƒ‹
 	CSound mSoundBgm;
 	CSound mSoundOver;

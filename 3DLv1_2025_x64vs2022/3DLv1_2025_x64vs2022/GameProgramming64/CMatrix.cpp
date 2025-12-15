@@ -210,3 +210,20 @@ CMatrix CMatrix::Transpose() const
 
 	return tmp; //代入されたtmpを返す
 }
+//↓もう一個のやり方
+//CMatrix CMatrix::Transpose() const
+//{
+//	CMatrix tmp; //返却用のCMatrixインスタンスを作成
+//	//tmpの２次元配列に、インスタンスの２次元配列を代入
+//	for (int i = 0; i < 4: i++)
+//	{
+//		for (int j = 0; j < 4: j++)
+//		{
+//			//２次元配列のi行j列目の値を代入する
+//			tmp.mM[i][j] = mM[j][i];
+//		}
+//	}
+//	return tmp; //代入されたtmpを返す
+//}
+
+

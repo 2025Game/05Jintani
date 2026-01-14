@@ -8,6 +8,7 @@
 */
 class CVertex {
 public:
+	
 	//ˆÊ’u
 	CVector mPosition;
 	//–@ü

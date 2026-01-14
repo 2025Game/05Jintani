@@ -49,3 +49,4 @@ void CColliderLine::Render()
 	//s—ñ•œ‹A
 	glPopMatrix();
 }
+

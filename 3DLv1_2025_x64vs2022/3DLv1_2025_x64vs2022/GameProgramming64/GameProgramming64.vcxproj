@@ -29,6 +29,7 @@
     <ClCompile Include="CCharacterManager.cpp" />
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CColliderLine.cpp" />
+    <ClCompile Include="CColliderMesh.cpp" />
     <ClCompile Include="CColliderTriangle.cpp" />
     <ClCompile Include="CCollisionManager.cpp" />
     <ClCompile Include="CEffect.cpp" />
@@ -76,6 +77,7 @@
     <ClInclude Include="CMatrix.h" />
     <ClInclude Include="CMiss.h" />
     <ClInclude Include="CModel.h" />
+    <ClInclude Include="CColliderMesh.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CPlayer2.h" />
     <ClInclude Include="CPoint.h" />

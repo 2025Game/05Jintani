@@ -9,6 +9,7 @@
 class CColliderMesh
 {
 public:
+	
 	CColliderMesh();
 	~CColliderMesh();
 	//Set(親, 親行列, モデル)

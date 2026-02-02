@@ -3,6 +3,10 @@
 #define CTASKMANAGER_H
 //タスククラスのインクルード
 #include "CTask.h"
+//#include "CCollisionManager.h"
+#include "CCollider.h"
+
+
 
 /*
 タスクマネージャ
@@ -10,6 +14,8 @@
 */
 class CTaskManager {
 public:
+	
+	void Collision();
 	//インスタンスの取得
 	static CTaskManager* Instance();
 	//タスクの削除

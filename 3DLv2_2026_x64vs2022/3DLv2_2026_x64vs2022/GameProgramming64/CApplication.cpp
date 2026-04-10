@@ -80,10 +80,13 @@ void CApplication::Start()
 	//C5モデルの読み込み
 	mModelC5.Load(MODEL_C5);
 	//敵機のインスタンス作成
-	new CEnemy(&mModelC5, CVector(0.0f, 10.0f, -100.0f),
-		CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelC5, CVector(20.0f, 10.0f, -130.0f),
-		CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelC5, CVector(0.0f, 10.0f, -100.0f),CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelC5, CVector(20.0f, 10.0f, -130.0f),CVector(), CVector(0.1f, 0.1f, 0.1f));
+
+	new CEnemy3(CVector(-5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy3(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+
+
 
 	//ビルボードの生成
 	new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);

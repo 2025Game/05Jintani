@@ -14,6 +14,7 @@
 #include "CTaskManager.h"
 #include "CColliderTriangle.h"
 #include "CColliderMesh.h"
+#include "CEnemy3.h"
 
 class CApplication
 {

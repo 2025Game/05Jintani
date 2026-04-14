@@ -1,6 +1,8 @@
 #include "CEnemy3.h"
 #include "CEffect.h"
 #include "CCollisionManager.h"
+#include "CPlayer.h"
+#include "CBullet.h"
 
 #define OBJ "res\\f16.obj"	//モデルのファイル
 #define MTL "res\\f16.mtl"	//モデルのマテリアルファイル
@@ -37,6 +39,39 @@ CEnemy3::CEnemy3(const CVector & position
 //更新処理
 void CEnemy3::Update()
 {
+	//プレイヤーのポインタが0以外の時
+	CPlayer* player = CPlayer::Instance();
+	if (player != nullptr)
+	{
+		//プレイヤーまでのベクトルを求める
+		CVector vp = player->Position() - mPosition;
+		//左ベクトルとの内積を求める
+		float dx = vp.Dot(mMatrixRotate.VectorX());
+		//上ベクトルとの内積を求める
+		float dy = vp.Dot(mMatrixRotate.VectorY());
+
+		float dz = vp.Dot(mMatrixRotate.VectorZ());
+
+		//X軸のズレが2.0未満
+		if (-30.0f < dx && dx < 30.0f)
+		{
+			//Y軸のズレが2.0未満
+			if (-30.0f < dy && dy < 30.0f)
+			{
+				if (-0.0f < dz && dz < 30.0f)
+				{
+					//弾を発射します
+					CBullet* bullet = new CBullet();
+					bullet->Set(0.1f, 1.5f);
+					bullet->Position(
+						CVector(0.0f, 0.0f, 10.0f) * mMatrix);
+					bullet->Rotation(mRotation);
+					bullet->Update();
+				}
+			}
+		}
+	}
+
 	mPosition = mPosition;
 }
 

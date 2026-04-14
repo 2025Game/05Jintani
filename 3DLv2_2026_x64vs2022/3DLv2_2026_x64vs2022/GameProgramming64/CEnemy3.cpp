@@ -53,10 +53,10 @@ void CEnemy3::Update()
 		float dz = vp.Dot(mMatrixRotate.VectorZ());
 
 		//XŽ²‚ÌƒYƒŒ‚ª2.0–¢–ž
-		if (-30.0f < dx && dx < 30.0f)
+		if (-2.0f < dx && dx < 2.0f)
 		{
 			//YŽ²‚ÌƒYƒŒ‚ª2.0–¢–ž
-			if (-2.0f < dy && dy < 2.0f)
+			if (-30.0f < dy && dy < 30.0f)
 			{
 				if (-0.0f < dz && dz < 30.0f)
 				{

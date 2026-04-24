@@ -3,6 +3,7 @@
 #define CGAMESCENE_H
 #include "CSceneBase.h"
 #include "CModel.h"
+#include "CXCharacter.h"
 //ƒQ[ƒ€ƒV[ƒ“
 class CGameScene :public CSceneBase
 {
@@ -14,5 +15,6 @@ public:
 	void Update();
 private:
 	CModel mBackGround; //”wŒiƒ‚ƒfƒ‹
+	CModelX mPlayer;
 };
 #endif

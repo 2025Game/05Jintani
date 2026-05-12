@@ -4,6 +4,7 @@
 #include "CSceneBase.h"
 #include "CModel.h"
 #include "CXCharacter.h"
+#include "CColliderMesh.h"
 //ゲームシーン
 class CGameScene :public CSceneBase
 {
@@ -16,5 +17,6 @@ public:
 private:
 	CModel mBackGround; //背景モデル
 	CModelX mPlayer;
+	CColliderMesh mColliderMesh; //メッシュコライダ
 };
 #endif

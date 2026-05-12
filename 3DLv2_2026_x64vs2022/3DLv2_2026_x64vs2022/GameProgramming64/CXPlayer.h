@@ -15,5 +15,6 @@ public:
 	void Collision(CCollider* m, CCollider* o);
 	//Õ“Ëˆ—
 	void Collision();
+
 };
 #endif

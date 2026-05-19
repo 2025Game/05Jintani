@@ -23,28 +23,25 @@ void CPlayerWalk::Update()
 		mpParent->Position(p +
 			mpParent->MatrixRotate().VectorZ() * VELOCITY);
 	}
-	else if (mInput.Key('A'))
-	{
-		CVector p = mpParent->Position();
-		mpParent->Position(p +
-			mpParent->MatrixRotate().VectorZ() * VELOCITY);
-		CVector r = mpParent->Rotation() +
-			CVector(0.0f, ROTATIONSPEED, 0.0f);
-		mpParent->Rotation(r);
-	}
-	else if (mInput.Key('D'))
-	{
-		CVector p = mpParent->Position();
-		mpParent->Position(p +
-			mpParent->MatrixRotate().VectorZ() * VELOCITY);
-		CVector r = mpParent->Rotation() +
-			CVector(0.0f, -ROTATIONSPEED, 0.0f);
-		mpParent->Rotation(r);
-	}
 	else
 	{
 		//Wキーが押され䛶い䛺い䛸き䛿待機状態䛻する
 		mState = EState::EIDLE;
+	}
+	// Aで左回転
+	if (mInput.Key('A'))
+	{
+		CVector r = mpParent->Rotation() +
+			CVector(0.0f, ROTATIONSPEED, 0.0f);
+		mpParent->Rotation(r);
+	}
+
+	// Dで右回転
+	if (mInput.Key('D'))
+	{
+		CVector r = mpParent->Rotation() +
+			CVector(0.0f, -ROTATIONSPEED, 0.0f);
+		mpParent->Rotation(r);
 	}
 }
 

@@ -6,6 +6,7 @@
 #include "CCollisionManager.h"
 #include "CPlayerIdle.h"
 #include "CState.h"
+#include "CPlayerWalk.h"
 
 class CXPlayer : public CXCharacter
 {
@@ -23,6 +24,6 @@ public:
 	void Collision(CCollider* m, CCollider* o);
 	//衝突処理
 	void Collision();
-
+	std::unique_ptr<CPlayerWalk> mpWalk; //歩く状態
 };
 #endif

@@ -1,13 +1,29 @@
-//‰Û‘è4.2 ƒvƒŒƒCƒ„[‚ªd—Í‚Ì•ª‚¾‚¯‰º‚ÖˆÚ“®‚·‚éˆÈ‰º‚ÌƒvƒƒOƒ‰ƒ€‚ğÀ‘•‚µ‚Ä‚­
-//‚¾‚³‚¢B(‰Á‘¬‚Íl—¶‚µ‚È‚­‚Ä‚æ‚¢‚Å‚·)
+ï»¿//èª²é¡Œ4.2 ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒé‡åŠ›ã®åˆ†ã ã‘ä¸‹ã¸ç§»å‹•ã™ã‚‹ä»¥ä¸‹ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’å®Ÿè£…ã—ã¦ã
+//ã ã•ã„ã€‚(åŠ é€Ÿã¯è€ƒæ…®ã—ãªãã¦ã‚ˆã„ã§ã™)
 #include "CXPlayer.h"
 
-#define GRAVITY 0.0625f // d—Í
+#define GRAVITY 0.0625f // é‡åŠ›
 void CXPlayer::Update()
 {
-	//ó‘Ô?XV
+	//çŠ¶æ…‹?æ›´æ–°
 	mpState->Update();
-	//‰Û‘è4.2 GRAVITY‚Ì‘å‚«‚³‚¾‚¯A‰º•ûŒü‚ÖˆÚ“®‚³‚¹‚é
+	//çŠ¶æ…‹ä›¾åˆ‡ã‚Šæ›¿ãˆ
+	if (mState != mpState->State())
+	{
+		mState = mpState->State();
+		switch (mState) {
+		case EState::EIDLE:
+			mpState = mpIdle.get();
+			break;
+		case EState::EWALK:
+			mpState = mpWalk.get();
+			break;
+		default:
+			break;
+		}
+		mpState->Start(this);
+	}
+	//èª²é¡Œ4.2 GRAVITYã®å¤§ãã•ã ã‘ã€ä¸‹æ–¹å‘ã¸ç§»å‹•ã•ã›ã‚‹
 	mPosition = mPosition - CVector(0.0f, GRAVITY, 0.0f);
 	CXCharacter::Update();
 }
@@ -16,31 +32,33 @@ CXPlayer::CXPlayer()
 	: mColliderLine(this, &mMatrix,CVector(0.0f, 3.5f, 0.0f), CVector(0.0f, 0.0f, 0.0f))
 {
 	mPosition = CVector(1.0f, 0.0f, 0.0f);
-	//‘Ò‹@ó‘Ô?ì¬
+	//å¾…æ©ŸçŠ¶æ…‹?ä½œæˆ
 	mpIdle = std::make_unique<CPlayerIdle>();
-	//Å‰?‘Ò‹@ó‘Ô
-	//get()?Aunique_ptr‚ª•Û‚µ?‚¢‚éƒ|ƒCƒ“ƒ^‚ğæ“¾‚·‚éŠÖ”
+	//æœ€åˆ?å¾…æ©ŸçŠ¶æ…‹
+	//get()?ã€unique_ptrãŒä¿æŒã—?ã„ã‚‹ãƒã‚¤ãƒ³ã‚¿ã‚’å–å¾—ã™ã‚‹é–¢æ•°
 	mpState = mpIdle.get();
 	mpState->Start(this);
 	mState = mpState->State();
+	//æ­©ãçŠ¶æ…‹ä›¾ä½œæˆ
+	mpWalk = std::make_unique<CPlayerWalk>();
 }
 
 void CXPlayer::Collision(CCollider* m, CCollider* o)
 {
-	//©g‚ÌƒRƒ‰ƒCƒ_ƒ^ƒCƒv‚Ì”»’è
+	//è‡ªèº«ã®ã‚³ãƒ©ã‚¤ãƒ€ã‚¿ã‚¤ãƒ—ã®åˆ¤å®š
 	switch (m->Type()) {
-	case CCollider::EType::ELINE://ü•ªƒRƒ‰ƒCƒ_
-		//‘Šè‚ÌƒRƒ‰ƒCƒ_‚ªOŠpƒRƒ‰ƒCƒ_‚Ì
+	case CCollider::EType::ELINE://ç·šåˆ†ã‚³ãƒ©ã‚¤ãƒ€
+		//ç›¸æ‰‹ã®ã‚³ãƒ©ã‚¤ãƒ€ãŒä¸‰è§’ã‚³ãƒ©ã‚¤ãƒ€ã®æ™‚
 		if (o->Type() == CCollider::EType::ETRIANGLE)
 		{
-			CVector adjust;//’²®—pƒxƒNƒgƒ‹
-			//OŠpŒ`‚Æü•ª‚ÌÕ“Ë”»’è
+			CVector adjust;//èª¿æ•´ç”¨ãƒ™ã‚¯ãƒˆãƒ«
+			//ä¸‰è§’å½¢ã¨ç·šåˆ†ã®è¡çªåˆ¤å®š
 			if (CCollider::CollisionTriangleLine(
 				o, m, &adjust))
 			{
-				//ˆÊ’u‚ÌXV(mPosition + adjust)
+				//ä½ç½®ã®æ›´æ–°(mPosition + adjust)
 				mPosition = mPosition + adjust;
-				//s—ñ‚ÌXV
+				//è¡Œåˆ—ã®æ›´æ–°
 				CTransform::Update();
 			}
 		}
@@ -48,12 +66,12 @@ void CXPlayer::Collision(CCollider* m, CCollider* o)
 	}
 }
 
-//Õ“Ëˆ—
+//è¡çªå‡¦ç†
 void CXPlayer::Collision()
 {
-	//ƒRƒ‰ƒCƒ_‚Ì—Dæ“x•ÏX
+	//ã‚³ãƒ©ã‚¤ãƒ€ã®å„ªå…ˆåº¦å¤‰æ›´
 	mColliderLine.ChangePriority();
-	//Õ“Ëˆ—‚ğÀs
+	//è¡çªå‡¦ç†ã‚’å®Ÿè¡Œ
 	CCollisionManager::Instance()->Collision(
 		&mColliderLine, COLLISIONRANGE);
 

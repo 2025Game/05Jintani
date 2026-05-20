@@ -43,5 +43,11 @@ void CPlayerWalk::Update()
 			CVector(0.0f, -ROTATIONSPEED, 0.0f);
 		mpParent->Rotation(r);
 	}
+	//Iで攻撃
+	if (mInput.Key('I'))
+	{
+		mState = EState::EATTACK;
+	}
+
 }
 

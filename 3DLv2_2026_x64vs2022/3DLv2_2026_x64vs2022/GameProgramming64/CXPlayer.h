@@ -7,6 +7,7 @@
 #include "CPlayerIdle.h"
 #include "CState.h"
 #include "CPlayerWalk.h"
+#include "CPlayerAttack.h"
 
 class CXPlayer : public CXCharacter
 {
@@ -25,5 +26,6 @@ public:
 	//衝突処理
 	void Collision();
 	std::unique_ptr<CPlayerWalk> mpWalk; //歩く状態
+	std::unique_ptr<CPlayerAttack> mpAttack; //攻撃状態
 };
 #endif

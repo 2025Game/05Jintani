@@ -49,5 +49,10 @@ void CPlayerWalk::Update()
 		mState = EState::EATTACK;
 	}
 
+	//スペースでジャンプ
+	if (mInput.Key(' '))
+	{
+		mState = EState::EJUMP;
+	}
 }
 

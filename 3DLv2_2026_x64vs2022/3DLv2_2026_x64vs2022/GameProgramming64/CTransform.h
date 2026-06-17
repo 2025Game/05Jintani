@@ -7,6 +7,8 @@
 */
 class CTransform {
 public:
+	//Šgk‚Ìæ“¾
+	const CVector& Scale() const;
 	CTransform();
 	const CMatrix& CombinedMatrix() const;
 	//ˆÊ’u‚Ìæ“¾

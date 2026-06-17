@@ -38,25 +38,29 @@ void CXPlayer::Update()
 	//課題4.2 GRAVITYの大きさだけ、下方向へ移動させる
 	mPosition = mPosition - CVector(0.0f, GRAVITY, 0.0f);
 	CXCharacter::Update();
+	//カメラの位置をプレイヤーの位置から、少し上にする
+	CCamera::Instance()->Position(CVector(0.0f, 4.0f, 0.0f));
 }
 
 CXPlayer::CXPlayer()
 	: mColliderLine(this, &mMatrix,CVector(0.0f, 3.5f, 0.0f), CVector(0.0f, 0.0f, 0.0f))
 {
 	mPosition = CVector(1.0f, 0.0f, 0.0f);
-	//待機状態?作成
+	//待機状態の作成
 	mpIdle = std::make_unique<CPlayerIdle>();
-	//最初?待機状態
-	//get()?、unique_ptrが保持し?いるポインタを取得する関数
+	//最初の待機状態
+	//get()が、unique_ptrが保持しているポインタを取得する関数
 	mpState = mpIdle.get();
 	mpState->Start(this);
 	mState = mpState->State();
-	//歩く状態䛾作成
+	//歩く状態の作成
 	mpWalk = std::make_unique<CPlayerWalk>();
 	//攻撃状態を作成
 	mpAttack = std::make_unique<CPlayerAttack>();
 	//ジャンプ状態を作成
 	mpJump = std::make_unique<CPlayerJump>();
+	//カメラ䛾親をプレイヤー䛻する
+	CCamera::Instance()->Parent(this);
 }
 
 void CXPlayer::Collision(CCollider* m, CCollider* o)

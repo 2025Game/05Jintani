@@ -1,5 +1,10 @@
 #include "CTransform.h"
 
+const CVector& CTransform::Scale() const
+{
+	return mScale;
+}
+
 CTransform::CTransform()
 {
 	mpParent = nullptr;
@@ -79,3 +84,4 @@ const CVector& CTransform::Rotation() const
 {
 	return mRotation;
 }
+

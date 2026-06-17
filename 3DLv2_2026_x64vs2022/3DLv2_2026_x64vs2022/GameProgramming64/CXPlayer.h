@@ -9,6 +9,7 @@
 #include "CPlayerWalk.h"
 #include "CPlayerAttack.h"
 #include "CPlayerJump.h"
+#include "CCamera.h"
 
 class CXPlayer : public CXCharacter
 {

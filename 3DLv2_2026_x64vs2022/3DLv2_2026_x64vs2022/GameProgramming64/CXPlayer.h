@@ -10,6 +10,7 @@
 #include "CPlayerAttack.h"
 #include "CPlayerJump.h"
 #include "CCamera.h"
+#include "CColliderCapsule.h"
 
 class CXPlayer : public CXCharacter
 {
@@ -22,6 +23,7 @@ public:
 	void Update() override;
 	CXPlayer();
 	CColliderLine mColliderLine; //ラインコライダ
+	CColliderCapsule mColliderCapsule; //カプセルコライダ
 	//衝突処理
 //Collision(コライダ1, コライダ2)
 	void Collision(CCollider* m, CCollider* o);

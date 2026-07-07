@@ -33,6 +33,7 @@ public:
 		ESPHERE,//球コライダ
 		ETRIANGLE,//三角コライダ
 		ELINE, //線分コライダ
+		ECAPSULE, //カプセルコライダ
 	};
 	CCollider::EType Type();
 
@@ -59,7 +60,7 @@ protected:
 	CVector mV[3];
 
 	CCharacter3* mpParent;//親
-	CMatrix* mpMatrix;//親行列
+	const CMatrix* mpMatrix;//親行列
 	float mRadius;	//半径
 };
 #endif

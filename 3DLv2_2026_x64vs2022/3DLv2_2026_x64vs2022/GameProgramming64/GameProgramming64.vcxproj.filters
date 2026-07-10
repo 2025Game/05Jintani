@@ -49,6 +49,9 @@
     <Filter Include="ソース ファイル\Lib\Game\Character\Player">
       <UniqueIdentifier>{0788e230-9b15-467c-aa7f-1512cd52fbf8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Lib\Game\Character\Paladin">
+      <UniqueIdentifier>{97e99c15-cb18-4ee9-b592-781ac93d3c12}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CApplication.cpp">
@@ -206,6 +209,9 @@
     </ClCompile>
     <ClCompile Include="CColliderCapsule.cpp">
       <Filter>ソース ファイル\Lib\BaseSystem\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CPaladin.cpp">
+      <Filter>ソース ファイル\Lib\Game\Character\Paladin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -379,6 +385,9 @@
     </ClInclude>
     <ClInclude Include="CColliderCapsule.h">
       <Filter>ソース ファイル\Lib\BaseSystem\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CPaladin.h">
+      <Filter>ソース ファイル\Lib\Game\Character\Paladin</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

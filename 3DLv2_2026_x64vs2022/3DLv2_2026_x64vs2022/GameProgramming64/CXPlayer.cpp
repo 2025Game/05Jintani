@@ -108,6 +108,29 @@ void CXPlayer::Collision(CCollider* m, CCollider* o)
 			}
 		}
 		break;
+
+	case CCollider::EType::ECAPSULE:
+
+		// 相手もカプセルコライダの場合
+		if (o->Type() == CCollider::EType::ECAPSULE)
+		{
+			CVector adjust;//調整用ベクトル
+			//カプセルとカプセルの衝突判定
+			if (CCollider::CollisionCapsuleCapsule(m, o, &adjust))
+			{
+				//衝突している場合、プレイヤーの位置を調整する
+				mPosition = CVector() * mMatrix + adjust;
+				//親子関係がある場合
+				if (m->Parent() && m->Parent()->Parent())
+				{
+					//親のローカル座標へ変換
+					mPosition = mPosition *
+						m->Parent()->Parent()->CombinedMatrix().Inverse();
+				}
+				//行列の更新
+				CTransform::Update();
+			}
+		}
 	}
 }
 
@@ -120,4 +143,10 @@ void CXPlayer::Collision()
 	CCollisionManager::Instance()->Collision(
 		&mColliderLine, COLLISIONRANGE);
 
+	// カプセルコライダの優先度更新
+	mColliderCapsule.ChangePriority();
+
+	// カプセルコライダの衝突処理
+	CCollisionManager::Instance()->Collision(
+		&mColliderCapsule, COLLISIONRANGE);
 }

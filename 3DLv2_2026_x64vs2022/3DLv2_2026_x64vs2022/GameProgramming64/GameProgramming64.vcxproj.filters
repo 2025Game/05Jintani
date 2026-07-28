@@ -213,6 +213,9 @@
     <ClCompile Include="CPaladin.cpp">
       <Filter>ソース ファイル\Lib\Game\Character\Paladin</Filter>
     </ClCompile>
+    <ClCompile Include="CPaladinIdle.cpp">
+      <Filter>ソース ファイル\Lib\Game\Character\Paladin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CApplication.h">
@@ -387,6 +390,9 @@
       <Filter>ソース ファイル\Lib\BaseSystem\Collider</Filter>
     </ClInclude>
     <ClInclude Include="CPaladin.h">
+      <Filter>ソース ファイル\Lib\Game\Character\Paladin</Filter>
+    </ClInclude>
+    <ClInclude Include="CPaladinIdle.h">
       <Filter>ソース ファイル\Lib\Game\Character\Paladin</Filter>
     </ClInclude>
   </ItemGroup>

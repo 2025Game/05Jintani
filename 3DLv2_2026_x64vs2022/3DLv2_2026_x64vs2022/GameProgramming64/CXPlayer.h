@@ -22,7 +22,7 @@ private:
 public:
 	void Update() override;
 	CXPlayer();
-	CColliderLine mColliderLine; //ラインコライダ
+	//CColliderLine mColliderLine; //ラインコライダ
 	CColliderCapsule mColliderCapsule; //カプセルコライダ
 	//衝突処理
 //Collision(コライダ1, コライダ2)

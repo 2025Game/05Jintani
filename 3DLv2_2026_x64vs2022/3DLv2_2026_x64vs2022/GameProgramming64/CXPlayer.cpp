@@ -44,8 +44,8 @@ void CXPlayer::Update()
 }
 
 CXPlayer::CXPlayer()
-	: mColliderLine(this, &mMatrix,CVector(0.0f, 3.5f, 0.0f), CVector(0.0f, 0.0f, 0.0f))
-	,mColliderCapsule(this, &mMatrix, CVector(0.0f, 3.5f, 0.0f), CVector(0.0f, 0.0f, 0.0f), 0.5f)
+	//: mColliderLine(this, &mMatrix,CVector(0.0f, 3.5f, 0.0f), CVector(0.0f, 0.0f, 0.0f))
+	: mColliderCapsule(this, &mMatrix, CVector(0.0f, 3.5f, 0.0f), CVector(0.0f, 0.0f, 0.0f), 0.5f)
 {
 	mPosition = CVector(1.0f, 0.0f, 0.0f);
 	//待機状態の作成
@@ -71,52 +71,52 @@ void CXPlayer::Collision(CCollider* m, CCollider* o)
 	mpState->Collision(m, o);
 	//自身のコライダタイプの判定
 	switch (m->Type()) {
-	case CCollider::EType::ELINE://線分コライダ
-		//相手のコライダが三角コライダの時
-		if (o->Type() == CCollider::EType::ETRIANGLE)
-		{
-			CVector adjust;//調整用ベクトル
-			//三角形と線分の衝突判定
-			if (CCollider::CollisionTriangleLine(
-				o, m, &adjust))
-			{
-				//位置の更新
-				//現在のワールドでの位置
-				mPosition = (CVector() * mMatrix + adjust);
-				//前方の位置を求める
-				CVector forward = (CVector(0.0f, 0.0f, 1.0f) * mMatrix + adjust);
-				if (o->Parent())
-				{
-					//親のローカル座標へ変換
-					mPosition = mPosition *
-						o->Parent()->CombinedMatrix().Inverse();
-					//親のローカル座標へ変換
-					forward = forward *
-						o->Parent()->CombinedMatrix().Inverse();
-				}
+	//case CCollider::EType::ELINE://線分コライダ
+	//	//相手のコライダが三角コライダの時
+	//	if (o->Type() == CCollider::EType::ETRIANGLE)
+	//	{
+	//		CVector adjust;//調整用ベクトル
+	//		//三角形と線分の衝突判定
+	//		if (CCollider::CollisionTriangleLine(
+	//			o, m, &adjust))
+	//		{
+	//			//位置の更新
+	//			//現在のワールドでの位置
+	//			mPosition = (CVector() * mMatrix + adjust);
+	//			//前方の位置を求める
+	//			CVector forward = (CVector(0.0f, 0.0f, 1.0f) * mMatrix + adjust);
+	//			if (o->Parent())
+	//			{
+	//				//親のローカル座標へ変換
+	//				mPosition = mPosition *
+	//					o->Parent()->CombinedMatrix().Inverse();
+	//				//親のローカル座標へ変換
+	//				forward = forward *
+	//					o->Parent()->CombinedMatrix().Inverse();
+	//			}
 
-				forward = forward - mPosition;
+	//			forward = forward - mPosition;
 
-				mRotation = CVector(mRotation.X(),
-					atan2f(forward.X(), forward.Z()) * RAD_TO_DEG,
-					mRotation.Z());
+	//			mRotation = CVector(mRotation.X(),
+	//				atan2f(forward.X(), forward.Z()) * RAD_TO_DEG,
+	//				mRotation.Z());
 
-				//親の設定
-				mpParent = o->Parent();
-				//行列の更新
-				CTransform::Update();
-			}
-		}
-		break;
+	//			//親の設定
+	//			mpParent = o->Parent();
+	//			//行列の更新
+	//			CTransform::Update();
+	//		}
+	//	}
+	//	break;
 
 	case CCollider::EType::ECAPSULE:
 
 		// 相手もカプセルコライダの場合
-		if (o->Type() == CCollider::EType::ECAPSULE)
+		if (o->Type() == CCollider::EType::ETRIANGLE)
 		{
 			CVector adjust;//調整用ベクトル
 			//カプセルとカプセルの衝突判定
-			if (CCollider::CollisionCapsuleCapsule(m, o, &adjust))
+			if (CCollider::CollisionTriangleCapsule(o, m, &adjust))
 			{
 				//衝突している場合、プレイヤーの位置を調整する
 				mPosition = CVector() * mMatrix + adjust;
@@ -137,11 +137,11 @@ void CXPlayer::Collision(CCollider* m, CCollider* o)
 //衝突処理
 void CXPlayer::Collision()
 {
-	//コライダの優先度変更
-	mColliderLine.ChangePriority();
-	//衝突処理を実行
-	CCollisionManager::Instance()->Collision(
-		&mColliderLine, COLLISIONRANGE);
+	////コライダの優先度変更
+	//mColliderLine.ChangePriority();
+	////衝突処理を実行
+	//CCollisionManager::Instance()->Collision(
+	//	&mColliderLine, COLLISIONRANGE);
 
 	// カプセルコライダの優先度更新
 	mColliderCapsule.ChangePriority();

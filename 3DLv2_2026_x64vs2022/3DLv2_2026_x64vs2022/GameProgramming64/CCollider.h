@@ -28,6 +28,10 @@ public:
 	//調整値:衝突しない位置まで戻す値
 	static bool CollisionTriangleLine(CCollider* triangle, CCollider* line, CVector* adjust);
 
+	static bool CollisionTriangleCapsule(CCollider* triangle,CCollider* capsule,CVector* adjust);
+
+	static bool CollisionTriangleCapsule(const CVector& t0,const CVector& t1,const CVector& t2,const CVector& cs,const CVector& ce,float cr,CVector* adjust);
+
 	//カプセルコライダとカプセルコライダの衝突判定
     //static bool CollisionCapsuleCapsule(カプセル1, カプセル2, 調整値)
     //調整値:カプセル1が衝突しない位置まで移動する移動量

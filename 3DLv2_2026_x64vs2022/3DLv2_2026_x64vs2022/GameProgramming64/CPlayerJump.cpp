@@ -25,14 +25,14 @@ void CPlayerJump::Collision(CCollider* m, CCollider* o)
 {
 	//自身䛾コライダタイプ䛾判定
 	switch (m->Type()) {
-	case CCollider::EType::ELINE://線分コライダ
+	case CCollider::EType::ECAPSULE://線分コライダ
 		//相手䛾コライダ䛜三角コライダ䛾時
 		if (o->Type() ==
 			CCollider::EType::ETRIANGLE)
 		{
 			CVector adjust;//調整用ベクトル
 			//三角形䛸線分䛾衝突判定
-			if (CCollider::CollisionTriangleLine(
+			if (CCollider::CollisionTriangleCapsule(
 				o, m, &adjust))
 
 			{

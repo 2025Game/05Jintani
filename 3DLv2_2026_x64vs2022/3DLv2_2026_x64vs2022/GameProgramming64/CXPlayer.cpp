@@ -114,22 +114,40 @@ void CXPlayer::Collision(CCollider* m, CCollider* o)
 		// 相手もカプセルコライダの場合
 		if (o->Type() == CCollider::EType::ETRIANGLE)
 		{
-			CVector adjust;//調整用ベクトル
-			//カプセルとカプセルの衝突判定
-			if (CCollider::CollisionTriangleCapsule(o, m, &adjust))
+			CVector adjust;
+
+			// カプセルと三角形の衝突判定
+			if (CCollider::CollisionTriangleCapsule(o,m,&adjust))
 			{
-				//衝突している場合、プレイヤーの位置を調整する
-				mPosition = CVector() * mMatrix + adjust;
-				//親子関係がある場合
-				if (m->Parent() && m->Parent()->Parent())
+				// 押し戻し後のワールド座標
+				mPosition =CVector() * mMatrix + adjust;
+
+				// 前方位置
+				CVector forward =CVector(0.0f, 0.0f, 1.0f) *mMatrix + adjust;
+
+				if (o->Parent())
 				{
-					//親のローカル座標へ変換
-					mPosition = mPosition *
-						m->Parent()->Parent()->CombinedMatrix().Inverse();
+					mPosition =mPosition *
+						o->Parent()->CombinedMatrix().Inverse();
+
+					forward =forward *
+						o->Parent()->CombinedMatrix().Inverse();
 				}
-				//行列の更新
+
+				forward = forward - mPosition;
+
+				// 床の回転に合わせる
+				mRotation = CVector(mRotation.X(),
+					atan2f(forward.X(),forward.Z()) *RAD_TO_DEG,
+					mRotation.Z());
+
+				// 親に設定
+				mpParent = o->Parent();
+
+				// 行列更新
 				CTransform::Update();
 			}
+
 		}
 	}
 }

@@ -10,6 +10,7 @@ CPaladin::CPaladin(const CVector& pos, const CVector& rot,
 	: mCollider(this, &mCombinedMatrix, CVector(0.0f, 4.0f, 0.0f),
 		CVector(0.0f, 0.0f, 0.0f), 0.5f)
 
+
 {
 	//static変数は初期値の状態で1つだけ作成され削除されない。
 	//1つ作成されたらその後初期値の代入はされない。

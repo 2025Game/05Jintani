@@ -13,11 +13,14 @@ public:
 	CPaladin(const CVector& pos, const CVector& rot = CVector()
 		, const CVector& scale = CVector(2.5f, 2.5f, 2.5f));
 	void Update() override;
+	void Collision(CCollider* m, CCollider* o);
+	void Collision();
 private:
 	static CModelX msModel;
-	CColliderCapsule mCollider; //カプセルコライダ
-	//EState mState;      // 状態の保持
-	//CState* mpState;    // 状態処理
-	//std::unique_ptr<CPaladinIdle> mpIdle; // 待機状態
+	//CColliderCapsule mCollider; //カプセルコライダ
+	EState mState;      // 状態の保持
+	CState* mpState;    // 状態処理
+	std::unique_ptr<CPaladinIdle> mpIdle; // 待機状態
+	CColliderCapsule mColliderCapsule;
 };
 #endif

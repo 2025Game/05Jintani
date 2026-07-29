@@ -26,6 +26,10 @@ public:
 	//true:終了　false:再生中
 	bool IsAnimationFinished();
 	int AnimationIndex(); //アニメーション番号の取得
+	CModelX* Model()
+	{
+		return mpModel;
+	}
 protected:
 	CMatrix* mpCombinedMatrix;	//合成行列退避
 	CModelX* mpModel;	//モデルデータ

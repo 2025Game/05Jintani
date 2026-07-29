@@ -111,7 +111,6 @@ void CXPlayer::Collision(CCollider* m, CCollider* o)
 
 	case CCollider::EType::ECAPSULE:
 
-		// 相手もカプセルコライダの場合
 		if (o->Type() == CCollider::EType::ETRIANGLE)
 		{
 			CVector adjust;
@@ -147,7 +146,28 @@ void CXPlayer::Collision(CCollider* m, CCollider* o)
 				// 行列更新
 				CTransform::Update();
 			}
+		}
+		else if (o->Type() == CCollider::EType::ECAPSULE)
+		{
+			CVector adjust;
 
+			if (CCollider::CollisionCapsuleCapsule(m, o, &adjust))
+			{
+				mPosition = CVector() * mMatrix + adjust;
+
+				CVector forward = CVector(0.0f, 0.0f, 1.0f) * mMatrix + adjust;
+
+				if (mpParent)
+				{
+					mPosition = mPosition * mpParent->CombinedMatrix().Inverse();
+
+					forward = forward * mpParent->CombinedMatrix().Inverse();
+				}
+
+				forward = forward - mPosition;
+
+				CTransform::Update();
+			}
 		}
 	}
 }

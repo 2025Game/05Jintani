@@ -41,11 +41,14 @@ void CXPlayer::Update()
 	//カメラの位置をプレイヤーの位置から、少し上にする
 	CCamera::Instance()->Position(CVector(0.0f, 4.0f, 0.0f));
 	mColliderCapsule.Update();
+	// 剣コライダの更新
+	mColliderSword.Update();
 }
 
 CXPlayer::CXPlayer()
 	//: mColliderLine(this, &mMatrix,CVector(0.0f, 3.5f, 0.0f), CVector(0.0f, 0.0f, 0.0f))
 	: mColliderCapsule(this, &mMatrix, CVector(0.0f, 3.5f, 0.0f), CVector(0.0f, 0.0f, 0.0f), 0.5f)
+	, mColliderSword(this, nullptr, CVector(), CVector(), 0.1f)
 {
 	mPosition = CVector(1.0f, 0.0f, 0.0f);
 	//待機状態の作成
@@ -67,6 +70,11 @@ CXPlayer::CXPlayer()
 
 void CXPlayer::Collision(CCollider* m, CCollider* o)
 {
+	if (o == &mColliderCapsule || o == &mColliderSword)
+	{
+		//相手がプレイヤーのコライダの時は、衝突処理を行わない
+		return;
+	}
 	//状態クラスの衝突処理
 	mpState->Collision(m, o);
 	//自身のコライダタイプの判定
@@ -183,8 +191,37 @@ void CXPlayer::Collision()
 
 	// カプセルコライダの優先度更新
 	mColliderCapsule.ChangePriority();
-
 	// カプセルコライダの衝突処理
 	CCollisionManager::Instance()->Collision(
 		&mColliderCapsule, COLLISIONRANGE);
+
+	//コライダの優先度変更
+	mColliderSword.ChangePriority();
+	//衝突処理を実行
+	CCollisionManager::Instance()->Collision(
+		&mColliderSword,
+		COLLISIONRANGE);
+}
+
+const CMatrix& CXPlayer::FrameCombinedMatrix(const char* name)
+{
+	//フレーム名䛛ら行列を取得䛩る
+	for (size_t i = 0; i < mpModel->Frames().size(); i++) {
+		if (strcmp(mpModel->Frames()[i]->Name(), name) == 0) {
+			return mpModel->Frames()[i]->CombinedMatrix();
+		}
+	}
+	static CMatrix dummy; //ダミー䛾行列
+	return dummy;
+}
+
+void CXPlayer::Init(CModelX* model)
+{
+	CXCharacter::Init(model);
+	//剣コライダ䛾設定
+	mColliderSword.Set(this,
+		&FrameCombinedMatrix("RightHand"),
+		CVector(-15.0f, 0.0f, 20.0f),
+		CVector(-15.0f, 0.0f, 70.0f), 0.1f);
+
 }

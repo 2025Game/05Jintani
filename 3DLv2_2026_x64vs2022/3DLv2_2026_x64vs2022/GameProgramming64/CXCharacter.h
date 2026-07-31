@@ -15,7 +15,7 @@ public:
 	void Update();
 	CXCharacter();
 	//初期化処理
-	void Init(CModelX* model);
+	virtual void Init(CModelX* model);
 	//アニメーションの変更
 	void ChangeAnimation(int index, bool loop, float framesize);
 	//更新処理

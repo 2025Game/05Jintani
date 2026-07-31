@@ -170,6 +170,7 @@ class CModelXFrame {
 	friend CShadowShader;
 	friend CColliderModelX;
 public:
+	char* Name() { return mpName; }
 	CModelXFrame();
 	const CMatrix& CombinedMatrix();
 	//‡¬s—ñ‚Ìì¬

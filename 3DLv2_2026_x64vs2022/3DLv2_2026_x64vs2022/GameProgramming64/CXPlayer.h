@@ -15,11 +15,13 @@
 class CXPlayer : public CXCharacter
 {
 private:
+	CColliderCapsule mColliderSword; //カプセルコライダ
 	EState mState; //状態䛾保持
 	CState* mpState; //状態処理
 	std::unique_ptr<CPlayerIdle> mpIdle; //待機状態
 
 public:
+	void Init(CModelX* model);
 	void Update() override;
 	CXPlayer();
 	//CColliderLine mColliderLine; //ラインコライダ
@@ -29,6 +31,7 @@ public:
 	void Collision(CCollider* m, CCollider* o);
 	//衝突処理
 	void Collision();
+	const CMatrix& FrameCombinedMatrix(const char* name);
 	std::unique_ptr<CPlayerWalk> mpWalk; //歩く状態
 	std::unique_ptr<CPlayerAttack> mpAttack; //攻撃状態
 	std::unique_ptr<CPlayerJump> mpJump; //ジャンプ状態

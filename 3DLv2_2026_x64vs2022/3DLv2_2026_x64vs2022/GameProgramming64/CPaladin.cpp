@@ -37,6 +37,7 @@ CPaladin::CPaladin(const CVector& pos, const CVector& rot,
 	mpState = mpIdle.get();
 	mpState->Start(this);
 	mState = mpState->State();
+    mpDamage = std::make_unique<CPaladinDamage>(this);
 }
 
 void CPaladin::Update()
@@ -46,6 +47,22 @@ void CPaladin::Update()
 	CXCharacter::Update();
 
 	mpState->Update();
+    //ó‘Ô‚ÌØ‚è‘Ö‚¦
+    if (mState != mpState->State())
+    {
+        mState = mpState->State();
+        switch (mState)
+        {
+        case EState::EIDLE:
+            mpState = mpIdle.get();
+            break;
+
+        case EState::EDAMAGE:
+            mpState = mpDamage.get();
+            break;
+        }
+        mpState->Start(this);
+    }
 
 	mColliderCapsule.Update();
 }
@@ -63,12 +80,12 @@ void CPaladin::Collision(CCollider* m, CCollider* o)
         {
             CVector adjust;
 
-            CVector forward = CVector(0.0f, 0.0f, 1.0f) * mMatrix + adjust;
-
             if (CCollider::CollisionTriangleCapsule( o, m,&adjust))
             {
                 
                 mPosition = CVector() * mMatrix + adjust;
+
+                CVector forward = CVector(0.0f, 0.0f, 1.0f) * mMatrix + adjust;
 
                 if (o->Parent())
                 {

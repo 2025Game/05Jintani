@@ -66,6 +66,10 @@ CXPlayer::CXPlayer()
 	mpJump = std::make_unique<CPlayerJump>();
 	//カメラ䛾親をプレイヤー䛻する
 	CCamera::Instance()->Parent(this);
+	//タグの設定
+	Tag(ETag::EPLAYER);
+	mColliderCapsule.Tag(ETag::EPLAYER);
+	mColliderSword.Tag(ETag::ESWORD);
 }
 
 void CXPlayer::Collision(CCollider* m, CCollider* o)

@@ -29,3 +29,32 @@ void CPaladinIdle::Update()
 {
 	
 }
+
+void CPaladinIdle::Collision(CCollider* m, CCollider* o)
+{
+	if (m->Type() != CCollider::EType::ECAPSULE)
+		return;
+
+	if (o->Type() != CCollider::EType::ECAPSULE)
+		return;
+
+	// 相手の親がプレイヤーか
+	if (o->Parent()->Tag() != ETag::EPLAYER)
+		return;
+
+	// プレイヤーが攻撃状態か
+	if (o->Parent()->State() != EState::EATTACK)
+		return;
+
+	// 相手コライダが剣か
+	if (o->Tag() != ETag::ESWORD)
+		return;
+
+	// 実際にカプセル同士が衝突しているか確認
+	CVector adjust;
+
+	if (CCollider::CollisionCapsuleCapsule(m, o, &adjust))
+	{
+		mState = EState::EDAMAGE;
+	}
+}

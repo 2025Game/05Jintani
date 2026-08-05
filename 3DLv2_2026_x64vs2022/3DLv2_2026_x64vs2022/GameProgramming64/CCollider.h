@@ -8,7 +8,7 @@ class CCollisionManager;
 コライダクラス
 衝突判定データ
 */
-class CCollider : public CTransform , CTask {
+class CCollider : public CTransform , public CTask {
 	friend CCollisionManager;
 public:
 	//優先度の変更

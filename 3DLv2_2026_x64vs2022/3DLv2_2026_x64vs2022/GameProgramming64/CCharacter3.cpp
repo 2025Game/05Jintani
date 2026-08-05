@@ -32,3 +32,8 @@ void CCharacter3::Render()
 {
 	mpModel->Render(mMatrix);
 }
+
+EState& CCharacter3::State()
+{
+	return mState;
+}

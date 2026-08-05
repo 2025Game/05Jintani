@@ -9,6 +9,7 @@ enum class EState
 	EWALK, //歩き
 	EATTACK, //攻撃
 	EJUMP, //ジャンプ
+	EDAMAGE,//ダメージ
 };
 class CState
 {

@@ -4,6 +4,7 @@
 #include "GLFW/glfw3.h"
 #include "main.h"
 #include "CApplication3.h"
+#include "CInput.h"
 
 CApplication3 gApplication;
 
@@ -87,6 +88,8 @@ int main(int argc, char** argv)
 		glfwTerminate();
 		return -1;
 	}
+	//ウィンドウのポインタを CInputクラスに設定する
+	CInput::Window(window);
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);

@@ -69,9 +69,6 @@
     <ClCompile Include="CRectangle.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="CInput.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="CCharacter.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -219,6 +216,9 @@
     <ClCompile Include="CPaladinDamage.cpp">
       <Filter>ソース ファイル\Lib\Game\Character\Paladin</Filter>
     </ClCompile>
+    <ClCompile Include="CInput.cpp">
+      <Filter>ソース ファイル\Lib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CApplication.h">
@@ -234,9 +234,6 @@
       <Filter>ソース ファイル\Lib</Filter>
     </ClInclude>
     <ClInclude Include="CRectangle.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="CInput.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="CCharacter.h">
@@ -400,6 +397,9 @@
     </ClInclude>
     <ClInclude Include="CPaladinDamage.h">
       <Filter>ソース ファイル\Lib\Game\Character\Paladin</Filter>
+    </ClInclude>
+    <ClInclude Include="CInput.h">
+      <Filter>ソース ファイル\Lib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -49,6 +49,12 @@ void CPlayerWalk::Update()
 		mState = EState::EATTACK;
 	}
 
+	//左クリックで攻撃
+	if (mInput.Key(VK_LBUTTON))
+	{
+		mState = EState::EATTACK;
+	}
+
 	//スペースでジャンプ
 	if (mInput.Key(' '))
 	{

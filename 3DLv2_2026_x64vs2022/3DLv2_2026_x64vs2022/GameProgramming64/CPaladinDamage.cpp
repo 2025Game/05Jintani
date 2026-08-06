@@ -1,5 +1,6 @@
 #include "CPaladinDamage.h"
 #include "CXCharacter.h"
+#include "CInput.h"
 // 指定されたアニメーションファイル
 #define ANIMATION_FILE "res\\paladin\\sword and shield impact (3).fbx.x"
 int CPaladinDamage::msAnimNo = 0;
@@ -36,4 +37,28 @@ void CPaladinDamage::Update()
 	{
 		mState = EState::EIDLE;
 	}
+}
+
+// ウィンドウのポインタ
+GLFWwindow* CInput::spWindow = nullptr;
+void CInput::Window(GLFWwindow* pwindow)
+{
+    spWindow = pwindow;
+}
+void CInput::MouseGetPosition(double* x, double* y)
+{
+    //マウス座標を取得する
+    glfwGetCursorPos(spWindow, x, y);
+}
+void CInput::MouseShowCursor(bool isShow)
+{
+    //マウスカーソルの表示設定する
+    glfwSetInputMode
+    (
+        spWindow,
+        GLFW_CURSOR,
+        isShow ? GLFW_CURSOR_NORMAL :
+        GLFW_CURSOR_DISABLED
+
+    );
 }

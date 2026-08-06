@@ -31,7 +31,13 @@ void CPlayerIdle::Update()
 	}
 
 	//I‚ÅUŒ‚
-	if (mInput.Key('I'))
+	if (mInput.Key('I') )
+	{
+		mState = EState::EATTACK;
+	}
+
+	//¶ƒNƒŠƒbƒN‚ÅUŒ‚
+	if (mInput.Key(VK_LBUTTON))
 	{
 		mState = EState::EATTACK;
 	}
@@ -41,4 +47,5 @@ void CPlayerIdle::Update()
 	{
 		mState = EState::EJUMP;
 	}
+
 }

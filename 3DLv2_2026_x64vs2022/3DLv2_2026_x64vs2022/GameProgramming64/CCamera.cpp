@@ -91,9 +91,31 @@ void CCamera::Update()
 	//マウスの位置を保存する
 	mX = x;
 	mY = y;
+
+	// モデルビュー行列を取得する
+	glGetFloatv(
+		GL_MODELVIEW_MATRIX,
+		mModelViewMatrix.M());
+
+	// モデルビュー行列の逆行列を求める
+	mModelViewInverse =
+		mModelViewMatrix.Inverse();
+
+	// 移動成分をクリア
+	mModelViewInverse.M()[3] = 0.0f;
+	mModelViewInverse.M()[7] = 0.0f;
+	mModelViewInverse.M()[11] = 0.0f;
+	mModelViewInverse.M()[12] = 0.0f;
+	mModelViewInverse.M()[13] = 0.0f;
+	mModelViewInverse.M()[14] = 0.0f;
 }
 
 void CCamera::Parent(CTransform* parent)
 {
 	mpParent = parent;
+}
+
+const CMatrix& CCamera::ModelViewInverse()
+{
+	return mModelViewInverse;
 }

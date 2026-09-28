@@ -1,4 +1,5 @@
 ﻿#include "CPlayerWalk.h"
+#include "CCamera.h"
 
 //移動速度
 #define VELOCITY 0.1f
@@ -19,6 +20,21 @@ void CPlayerWalk::Update()
 {
 	if (mInput.Key('W'))
 	{
+		// カメラの右方向ベクトルを取得する
+		CVector cx;
+		cx = CCamera::Instance()->ModelViewInverse().VectorX();
+
+		// プレイヤーの前方向ベクトルを取得する
+		CVector fwd = mpParent->CombinedMatrix().VectorZ();
+
+		// 内積を計算して、回転量を求める
+		CVector rot(0.0f, cx.Dot(fwd) * 10.0f, 0.0f);
+
+		// プレイヤーをカメラ方向へ回転させる
+		mpParent->Rotation(mpParent->Rotation() + rot);
+
+		CCamera::Instance()->Rotation(CCamera::Instance()->Rotation() - rot);
+
 		CVector p = mpParent->Position();
 		mpParent->Position(p +
 			mpParent->MatrixRotate().VectorZ() * VELOCITY);

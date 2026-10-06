@@ -15,17 +15,26 @@ void CPlayerIdle::Update()
 	//Aキー?左回転、Dキー?右回転
 	if (mInput.Key('D'))
 	{
-		CVector r = mpParent->Rotation() +
+		/*CVector r = mpParent->Rotation() +
 			CVector(0.0f, -ROTATIONSPEED, 0.0f);
-		mpParent->Rotation(r);
+		mpParent->Rotation(r);*/
+		mState = EState::EWALK;
 	}
-	else if (mInput.Key('A'))
+	
+	if (mInput.Key('A'))
 	{
-		CVector r = mpParent->Rotation() +
+		/*CVector r = mpParent->Rotation() +
 			CVector(0.0f, ROTATIONSPEED, 0.0f);
-		mpParent->Rotation(r);
+		mpParent->Rotation(r);*/
+		mState = EState::EWALK;
 	}
-	else if (mInput.Key('W'))
+	
+	if (mInput.Key('W'))
+	{
+		mState = EState::EWALK;
+	}
+	
+	if (mInput.Key('S'))
 	{
 		mState = EState::EWALK;
 	}

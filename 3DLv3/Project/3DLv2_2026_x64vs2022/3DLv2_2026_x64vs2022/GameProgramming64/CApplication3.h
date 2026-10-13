@@ -5,7 +5,7 @@
 
 #include "CTestScene.h"
 #include <memory> //std::shared_ptr
-#include "SceneBase.h"
+
 
 class CApplication3
 {

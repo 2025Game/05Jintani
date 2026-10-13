@@ -62,7 +62,7 @@
     <ClCompile Include="CVector.cpp" />
     <ClCompile Include="CXCharacter.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SceneBase.cpp" />
+    <ClCompile Include="CSceneBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CApplication.h" />
@@ -112,7 +112,7 @@
     <ClInclude Include="CXCharacter.h" />
     <ClInclude Include="EScene.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="SceneBase.h" />
+    <ClInclude Include="CSceneBase.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

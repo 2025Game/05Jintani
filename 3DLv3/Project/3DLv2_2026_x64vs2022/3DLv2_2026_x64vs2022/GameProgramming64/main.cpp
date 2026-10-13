@@ -4,9 +4,8 @@
 #include "GLFW/glfw3.h"
 #include "main.h"
 #include "CApplication3.h"
-#include "CApplication3D.h"
 
-CApplication3D gApplication;
+CApplication3 gApplication;
 
 /* displayä÷êî
 1ïbä‘Ç…60âÒé¿çsÇ≥ÇÍÇÈ

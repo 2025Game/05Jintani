@@ -43,6 +43,9 @@
     <Filter Include="ソース ファイル\Game\Character">
       <UniqueIdentifier>{379ca564-9156-4839-9e22-5cde9873e569}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\BaseSystem\Collider">
+      <UniqueIdentifier>{e5e7ab7c-4c6f-4e1d-a67c-d6c77cfb6700}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CApplication.cpp">
@@ -93,16 +96,10 @@
     <ClCompile Include="CUi.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="CCamera.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="CVector.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="CMatrix.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="CTransform.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="CBillBoard.cpp">
@@ -117,22 +114,7 @@
     <ClCompile Include="CPlayer2.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="CCollider.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="CColliderLine.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="CColliderMesh.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="CColliderTriangle.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="CCollisionManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneBase.cpp">
+    <ClCompile Include="CSceneBase.cpp">
       <Filter>ソース ファイル\BaseSystem\Scene</Filter>
     </ClCompile>
     <ClCompile Include="CTestScene.cpp">
@@ -176,6 +158,27 @@
     </ClCompile>
     <ClCompile Include="CCube.cpp">
       <Filter>ソース ファイル\Game\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>ソース ファイル\BaseSystem\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CColliderLine.cpp">
+      <Filter>ソース ファイル\BaseSystem\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CColliderMesh.cpp">
+      <Filter>ソース ファイル\BaseSystem\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CColliderTriangle.cpp">
+      <Filter>ソース ファイル\BaseSystem\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollisionManager.cpp">
+      <Filter>ソース ファイル\BaseSystem\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CTransform.cpp">
+      <Filter>ソース ファイル\BaseSystem\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>ソース ファイル\BaseSystem\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -230,20 +233,11 @@
     <ClInclude Include="CUi.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="CCamera.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="CVector.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="CMatrix.h">
       <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="CTransform.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="CCollisionManager.h">
-      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="CBillBoard.h">
       <Filter>ソース ファイル</Filter>
@@ -257,22 +251,10 @@
     <ClInclude Include="CPlayer2.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="CCollider.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="CColliderLine.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="CColliderMesh.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="CColliderTriangle.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="EScene.h">
       <Filter>ソース ファイル\BaseSystem\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="SceneBase.h">
+    <ClInclude Include="CSceneBase.h">
       <Filter>ソース ファイル\BaseSystem\Scene</Filter>
     </ClInclude>
     <ClInclude Include="CTestScene.h">
@@ -322,6 +304,27 @@
     </ClInclude>
     <ClInclude Include="CCube.h">
       <Filter>ソース ファイル\Game\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>ソース ファイル\BaseSystem\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CColliderLine.h">
+      <Filter>ソース ファイル\BaseSystem\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CColliderMesh.h">
+      <Filter>ソース ファイル\BaseSystem\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CColliderTriangle.h">
+      <Filter>ソース ファイル\BaseSystem\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollisionManager.h">
+      <Filter>ソース ファイル\BaseSystem\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CTransform.h">
+      <Filter>ソース ファイル\BaseSystem\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>ソース ファイル\BaseSystem\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-#include "SceneBase.h"
+#include "CSceneBase.h"
 
 CSceneBase::CSceneBase(EScene scene)
 {

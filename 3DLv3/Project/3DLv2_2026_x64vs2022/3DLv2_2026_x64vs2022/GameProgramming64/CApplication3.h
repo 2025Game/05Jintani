@@ -1,0 +1,22 @@
+#pragma once
+
+#ifndef CAPPLICATION3_H
+#define CAPPLICATION3_H
+
+#include "CTestScene.h"
+#include <memory> //std::shared_ptr
+#include "SceneBase.h"
+
+class CApplication3
+{
+public:
+	CApplication3();
+	~CApplication3();
+	void Start();
+	void Update();
+private:
+	//シーンのインスタンスを保持するスマートポインタ
+	std::unique_ptr<CSceneBase> mpScene;
+};
+
+#endif

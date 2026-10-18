@@ -10,6 +10,6 @@ public:
 private:
 	//モデルデータのインスタンス
 	static CModel msModel;
-	//コライダは上面だけ付ける
-	CColliderTriangle mCollider[2];
+	//コライダは底面以外に付ける
+	CColliderTriangle mCollider[10];
 };

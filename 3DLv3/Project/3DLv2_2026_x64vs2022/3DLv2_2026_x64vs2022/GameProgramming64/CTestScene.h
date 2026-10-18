@@ -4,6 +4,8 @@
 
 #include "CSceneBase.h"
 #include "CModel.h"
+#include "CXCharacter.h"
+#include "CColliderMesh.h"
 
 //テストシーン
 class CTestScene :public CSceneBase
@@ -15,7 +17,8 @@ public:
 	//シーンの更新処理
 	void Update();
 private:
-	
+	CModelX mPlayer;
+	CColliderMesh mColliderMesh; //メッシュコライダ
 };
 
 #endif

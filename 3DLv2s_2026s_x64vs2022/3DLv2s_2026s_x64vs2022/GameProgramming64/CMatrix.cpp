@@ -146,3 +146,8 @@ CMatrix CMatrix::Identity() {
 	//‚±‚Ìs—ñ‚ğ•Ô‚·
 	return *this;
 }
+
+int CMatrix::Size()
+{
+	return sizeof(mM) / sizeof(float);
+}

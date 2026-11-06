@@ -4,8 +4,10 @@
 
 #include <vector>	//vectorクラスのインクルード（動的配列）
 #include "CMatrix.h"	//マトリクスクラスのインクルード
+#include "CVector.h"
 class CModelX;		// CModelXクラスの宣言
 class CModelXFrame;	// CModelXFrameクラスの宣言
+class CMesh;	// CMeshクラスの宣言
 
 #define MODEL_FILE "res\\sample.blend.x"	//入力ファイル名 \は￥
 
@@ -18,6 +20,7 @@ class CModelXFrame;	// CModelXFrameクラスの宣言
 class CModelX {
 	friend CModelXFrame;
 public:
+	char* Token();
 	~CModelX();
 	//ノードの読み飛ばし
 	void SkipNode();
@@ -43,6 +46,7 @@ public:
 	//デストラクタ
 	~CModelXFrame();
 private:
+	CMesh* mpMesh;	//Meshデータ
 	std::vector<CModelXFrame*> mChild;  //子フレームの配列
 	CMatrix mTransformMatrix;  //変換行列
 	char* mpName;   //フレーム名前
@@ -50,3 +54,17 @@ private:
 };
 
 #endif
+
+//CMeshクラスの定義
+class CMesh {
+public:
+	//コンストラクタ
+	CMesh();
+	//デストラクタ
+	~CMesh();
+	//読み込み処理
+	void Init(CModelX* model);
+private:
+	int mVertexNum;	//頂点数
+	CVector* mpVertex;	//頂点データ
+};

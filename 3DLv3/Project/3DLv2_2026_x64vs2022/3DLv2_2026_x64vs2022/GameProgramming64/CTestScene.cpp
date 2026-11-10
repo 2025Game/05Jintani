@@ -17,7 +17,7 @@ void CTestScene::Load()
 	//床
 	CCharacter3* floor = new CCube();
 	floor->Position(CVector(0.0f, -1.0f, 0.0f));
-	floor->Scale(CVector(80.0f, 0.5f, 50.0f));
+	floor->Scale(CVector(40.0f, 0.5f, 50.0f));//80.0f, 0.5f, 50.0f
 	//壁
 	CCharacter3* wall = new CCube();
 	wall->Position(CVector(0.0f, 0.0f, 0.0f));
@@ -64,10 +64,13 @@ void CTestScene::Update()
 	/*gluLookAt(1.0f, 25.0f, 80.0f,
 		0.0f, 2.0f, 0.0f,
 		0.0f, 1.0f, 0.0f);*/
-		//カメラの更新
-	CCamera::Instance()->Update();
+
 	//全キャラクタの更新
 	CTaskManager::Instance()->Update();
+	//カメラの更新
+	CCamera::Instance()->Update();
+	//衝突処理の呼び出し
+	CTaskManager::Instance()->Collision();
 	//全キャラクタの描画
 	CTaskManager::Instance()->Render();
 

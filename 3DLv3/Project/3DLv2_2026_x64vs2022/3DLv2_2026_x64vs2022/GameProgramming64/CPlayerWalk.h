@@ -2,6 +2,7 @@
 #include "CState.h"
 #include "CInput.h"
 #include "CXCharacter.h"
+#include "CCamera.h"
 
 class CPlayerWalk : public CState
 {

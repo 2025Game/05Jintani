@@ -11,6 +11,7 @@
 #include "CColliderCapsule.h"
 #include "CCollisionManager.h"
 
+
 class CXPlayer : public CXCharacter
 {
 public:
@@ -23,11 +24,22 @@ public:
 	CXPlayer();
 	CColliderCapsule mColliderCapsule; //カプセルコライダ
 	const CMatrix& FrameCombinedMatrix(const char* name);
+	void Damage(int damege);
+	CVector mCheckpointPos;
+	void SetCheckpoint();
+	void Respawn();
 private:
 	EState mState;//状態の保持
 	CState* mpState;//状態処理
 	std::unique_ptr<CPlayerIdle> mpIdle;//待機状態
 	std::unique_ptr<CPlayerWalk> mpWalk; //歩く状態
 	std::unique_ptr<CPlayerJump> mpJump; //ジャンプ状態
+	CInput mInput;
+	bool mCameraMode;//視点切り替え
+	bool mClick;//クリックされているか
+	int mMaxHP;//最大HP
+	int mHP;//現在のHP
+	bool mDead;//死亡状態
+	bool mDamageClick;
 };
 #endif

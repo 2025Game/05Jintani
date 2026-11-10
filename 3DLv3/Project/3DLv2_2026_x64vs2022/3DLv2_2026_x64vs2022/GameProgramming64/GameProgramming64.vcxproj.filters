@@ -66,9 +66,6 @@
     <ClCompile Include="CRectangle.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="CInput.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="CCharacter.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -198,6 +195,9 @@
     <ClCompile Include="CColliderCapsule.cpp">
       <Filter>ソース ファイル\BaseSystem\Collider</Filter>
     </ClCompile>
+    <ClCompile Include="CInput.cpp">
+      <Filter>ソース ファイル\Lib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CApplication.h">
@@ -213,9 +213,6 @@
       <Filter>ソース ファイル\Lib</Filter>
     </ClInclude>
     <ClInclude Include="CRectangle.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="CInput.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="CCharacter.h">
@@ -361,6 +358,9 @@
     </ClInclude>
     <ClInclude Include="CColliderCapsule.h">
       <Filter>ソース ファイル\BaseSystem\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CInput.h">
+      <Filter>ソース ファイル\Lib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

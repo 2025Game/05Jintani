@@ -1,6 +1,7 @@
 #pragma once
 #include "CState.h"
 #include "CInput.h"
+#include "CCamera.h"
 
 class CPlayerIdle : public CState
 {

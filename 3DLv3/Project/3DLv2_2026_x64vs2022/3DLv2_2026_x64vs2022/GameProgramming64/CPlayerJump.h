@@ -2,6 +2,8 @@
 #include "CState.h"
 #include "CXCharacter.h"
 #include "CCollider.h"
+#include "CInput.h"
+#include "CCamera.h"
 
 class CPlayerJump :public CState
 {
@@ -9,6 +11,7 @@ public:
 	void Start(CXCharacter* parent) override;
 	void Update() override;
 private:
+	CInput mInput;
 	CVector mJumpV; //ジャンプの速度
 	//衝突処理
     //Collision(コライダ1, コライダ2)

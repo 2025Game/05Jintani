@@ -329,7 +329,7 @@ void CMesh::Init(CModelX* model) {
 		printf("%10d %10d %10d\n", mpVertexIndex[i], mpVertexIndex[i + 1], mpVertexIndex[i + 2]);
 	}
 	printf("NormalNum:%d\n", mNormalNum);
-	for(int i = 0; i < mNormalNum; i += 3) {
+	for(int i = 0; i < mNormalNum; i ++) {
 		printf("%10f %10f %10f\n", mpNormal[i].X(), mpNormal[i].Y(), mpNormal[i].Z());
 	}
 #endif

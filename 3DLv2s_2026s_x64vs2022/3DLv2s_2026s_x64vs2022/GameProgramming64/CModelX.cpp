@@ -245,12 +245,15 @@ CMesh::CMesh()
 	, mpVertex(nullptr)
 	, mFaceNum(0)
 	, mpVertexIndex(nullptr)
+	, mNormalNum(0)
+	, mpNormal(nullptr)
 {}
 
 //デストラクタ
 CMesh::~CMesh() {
 	SAFE_DELETE_ARRAY(mpVertex);
 	SAFE_DELETE_ARRAY(mpVertexIndex);
+	SAFE_DELETE_ARRAY(mpNormal);
 }
 
 /*
@@ -284,6 +287,37 @@ void CMesh::Init(CModelX* model) {
 		mpVertexIndex[i + 1] = atoi(model->GetToken());
 		mpVertexIndex[i + 2] = atoi(model->GetToken());
 	}
+	model->GetToken();	//MeshNormals
+	if (strcmp(model->Token(), "MeshNormals") == 0) {
+		model->GetToken();	// {
+		//法線データ数を取得
+		mNormalNum = atoi(model->GetToken());
+		//法線のデータを配列に取り込む
+		CVector* pNormal = new CVector[mNormalNum];
+		for (int i = 0; i < mNormalNum; i++) {
+			pNormal[i].X(atof(model->GetToken()));
+			pNormal[i].Y(atof(model->GetToken()));
+			pNormal[i].Z(atof(model->GetToken()));
+		}
+		//法線数=面数×３
+		mNormalNum = atoi(model->GetToken()) * 3; //FaceNum
+		int ni;
+		//頂点毎に法線データを設定する
+		mpNormal = new CVector[mNormalNum];
+		for (int i = 0; i < mNormalNum; i += 3) {
+			model->GetToken(); // 3
+			ni = atoi(model->GetToken());
+			mpNormal[i] = pNormal[ni];
+			model->GetToken(); // 3
+			ni = atoi(model->GetToken());
+			mpNormal[i + 1] = pNormal[ni];
+			model->GetToken(); // 3
+			ni = atoi(model->GetToken());
+			mpNormal[i + 2] = pNormal[ni];
+		}
+		delete[] pNormal;
+		model->GetToken();	// }
+	} // End of MeshNormals
 	//デバッグバージョンのみ有効
 #ifdef _DEBUG
 	printf("VertexNum:%d\n", mVertexNum);
@@ -293,6 +327,10 @@ void CMesh::Init(CModelX* model) {
 	printf("FaceNum:%d\n", mFaceNum);
 	for (int i = 0; i < mFaceNum * 3; i += 3) {
 		printf("%10d %10d %10d\n", mpVertexIndex[i], mpVertexIndex[i + 1], mpVertexIndex[i + 2]);
+	}
+	printf("NormalNum:%d\n", mNormalNum);
+	for(int i = 0; i < mNormalNum; i += 3) {
+		printf("%10f %10f %10f\n", mpNormal[i].X(), mpNormal[i].Y(), mpNormal[i].Z());
 	}
 #endif
 }

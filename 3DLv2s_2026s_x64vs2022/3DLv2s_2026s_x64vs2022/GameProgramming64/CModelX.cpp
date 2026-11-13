@@ -308,10 +308,8 @@ void CMesh::Init(CModelX* model) {
 			model->GetToken(); // 3
 			ni = atoi(model->GetToken());
 			mpNormal[i] = pNormal[ni];
-			model->GetToken(); // 3
 			ni = atoi(model->GetToken());
 			mpNormal[i + 1] = pNormal[ni];
-			model->GetToken(); // 3
 			ni = atoi(model->GetToken());
 			mpNormal[i + 2] = pNormal[ni];
 		}
